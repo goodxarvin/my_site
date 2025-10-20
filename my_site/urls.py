@@ -16,11 +16,10 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
-from my_site.view_test import tset_request, test_json
+from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("test-request", tset_request),
-    path("test-json", test_json)
+    path("", include("home.urls")),
+    path("website/", include("website.urls"))
 ]
