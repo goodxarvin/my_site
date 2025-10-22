@@ -2,13 +2,17 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 
 
+def web_view(request):
+    return render(request, "web_index.html")
+
+
 def contact_view(request):
-    return HttpResponse("<b><h1>contact page<h1><b>")
+    return render(request, "contact.html")
 
 
 def address_view(request):
-    return HttpResponse("<b><h1>address page<h1><b>")
+    return render(request, "address.html")
 
 
 def host_view(request):
-    return HttpResponse("<b><h1>host page<h1><b>")
+    return render(request, "host.html")
