@@ -3,16 +3,16 @@ from django.http import HttpResponse, JsonResponse
 
 
 def web_view(request):
-    return render(request, "web_index.html")
+    return render(request, "website/web_index.html")
 
 
 def contact_view(request):
-    return render(request, "contact.html")
+    return render(request, "website/contact.html")
 
 
 def address_view(request):
-    return render(request, "address.html")
+    return render(request, "website/address.html")
 
 
 def host_view(request):
-    return render(request, "host.html")
+    return render(request, "website/host.html")
