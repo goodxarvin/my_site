@@ -3,8 +3,4 @@ from django.http import HttpResponse
 
 
 def home_view(request):
-    return render(request, "travelista_main_page/index.html")
-
-
-def home_about_view(request):
-    return render(request, "travelista_main_page/about.html")
+    return render(request, "travelista/index.html")
