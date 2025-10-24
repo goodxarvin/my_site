@@ -16,3 +16,7 @@ def address_view(request):
 
 def host_view(request):
     return render(request, "website/host.html")
+
+
+def test_view(request):
+    return render(request, 'website/test.html', {"name": "arvin", "age": 16})
