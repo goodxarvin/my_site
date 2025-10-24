@@ -26,7 +26,8 @@ urlpatterns = [
     path("website/", include("website.urls"), name="web"),
     path("about/", include("about.urls")),
     path("contact/", include("contact.urls")),
-    path("elements/", include("elements.urls"))
+    path("elements/", include("elements.urls")),
+    path("blog/", include("blog.urls"))
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
