@@ -1,10 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+app_name = "home"
+
 
 def home_view(request):
-    return render(request, "main_page/index.html")
-
-
-def home_info_view(request):
-    return render(request, "info.html")
+    return render(request, "resume/index.html")
