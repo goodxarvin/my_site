@@ -14,8 +14,10 @@ class Post(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     updated_time = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        ordering = ["-created_time"]
+        # verbose_name = "پست"
+        # verbose_name_plural = "پست ها 🗿👍"
+
     def __str__(self):
         return f"{self.id}, {self.title}"
-
-
-#

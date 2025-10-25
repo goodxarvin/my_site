@@ -8,3 +8,6 @@ class Submitted(models.Model):
     messsage = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
     updated_time = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f"{self.name}: {self.subject}"
