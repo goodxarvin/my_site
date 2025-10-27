@@ -18,10 +18,10 @@ def test_view(request, name, email, year):
     return render(request, "travelista/blog/test.html", name_dict)
 
 
-def post_view(request, post_id, title):
+def post_view(request, slug, post_id):
     # post = Post.objects.get(id=pid)
     post = get_object_or_404(Post, pk=post_id)
-    Post.objects.filter(id=post_id, title=title).update(
+    Post.objects.filter(id=post_id, slug=slug).update(
         counted_views=F("counted_views") + 1)
     post.refresh_from_db()
     context = {"post": post}

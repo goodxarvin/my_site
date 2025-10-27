@@ -7,5 +7,5 @@ urlpatterns = [
     path("", home_view, name="home"),
     path("single/", single_view, name="single"),
     path("name/<str:name>/email/<str:email>/year/<int:year>", test_view, name="test"),
-    path("post-<int:post_id>-<str:title>", post_view, name="details")
+    path("post-<slug:slug>-<int:post_id>", post_view, name="details")
 ]
