@@ -1,7 +1,6 @@
-from blog.models import Post
-from django.utils.text import slugify
+a = '''wjkxnjsnjncjdcnjcdn
+skijdijcijc
+oejiejdunjdjix8yhe'''
 
-ps = Post.objects.all()
-
-for p in ps:
-     
+a = a.split("\n")
+print(a)

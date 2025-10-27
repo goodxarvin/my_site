@@ -4,8 +4,13 @@ from django.db.models import F
 from django.utils import timezone
 
 
-def single_view(request):
-    return render(request, "travelista/blog/blog-single.html")
+def single_view(request, slug, post_id):
+    post = get_object_or_404(Post, pk=post_id, status=1)
+    # posts = Post.objects.filter(status=1)
+    # post = get_object_or_404(posts, pk=post_id) ==> second way for the top code
+    paragraph = post.content.split("\n")
+    context = {"post": post, "paragraph": paragraph}
+    return render(request, "travelista/blog/blog-single.html", context)
 
 
 def home_view(request):

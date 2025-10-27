@@ -99,9 +99,12 @@
 							<li><a href="#">Politics,</a></li>
 							<li><a href="#">Lifestyle</a></li>
 						</ul>
+						<!--because of the magic method (__str__) for first name {{post.author}} will print the username field of the user-->
 						<div class="user-details row">
-							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">Mark wiens</a> <span
-									class="lnr lnr-user"></span></p>
+							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.first_name}}
+									:{{post.author.get_full_name}}</a>
+								<span class="lnr lnr-user"></span>
+							</p>
 							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date}}</a> <span
 									class="lnr lnr-calendar-full"></span></p>
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}}</a> <span
@@ -114,13 +117,14 @@
 						<div class="feature-img">
 							<img class="img-fluid" src="{% static 'img/blog/feature-img1.jpg' %}" alt="">
 						</div>
-						<a class="posts-title" href="{% url 'blog:details' post.slug post.id %}">
+						<a class="posts-title" href="{% url 'blog:single' post.slug post.id %}">
 							<h3>{{post.title}}</h3>
 						</a>
 						<p class="excert">
 							{{post.content}}
 						</p>
-						<a href="{% url 'blog:details' post.slug post.id %}" class="primary-btn">View More</a>
+						<a href="{% url 'blog:single' slug=post.slug post_id=post.id %}" class="primary-btn">View
+							More</a>
 					</div>
 				</div>
 				{% endfor %}
