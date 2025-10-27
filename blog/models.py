@@ -3,11 +3,18 @@ from django.utils.text import slugify
 from django.contrib.auth.models import User
 
 
+class Category(models.Model):
+    category_type = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.category_type
+
+
 class Post(models.Model):
     image = models.ImageField(upload_to="blog/", default="blog/default.jpg")
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     # tag
-    # category
+    category = models.ManyToManyField(Category)
     title = models.CharField(max_length=255)
     content = models.TextField()
     status = models.BooleanField(default=False)
