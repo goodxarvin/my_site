@@ -20,6 +20,8 @@
     <p>{{post.title}}</p>
     <p>{{ post.content|summerize:63}}</p>
     {% endfor %}
+    <p>----------------</p>
+    {% latest_posts %}
 </body>
 
 </html>

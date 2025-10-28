@@ -42,20 +42,25 @@ def home_view(request):
     return render(request, "travelista/blog/blog-home.html", published_posts_dict)
 
 
-def test_view(request, name, email, year):
-    name_dict = {"name": name, "email": email, "year": year}
-    return render(request, "travelista/blog/test.html", name_dict)
+# def test_view(request, name, email, year):
+#     name_dict = {"name": name, "email": email, "year": year}
+#     return render(request, "travelista/blog/test.html", name_dict)
 
 
-def test(request):
-    return render(request, "travelista/blog/test.html")
+# def test(request):
+#     return render(request, "travelista/blog/test.html")
 
 
-def post_view(request, slug, post_id):
-    # post = Post.objects.get(id=pid)
-    post = get_object_or_404(Post, pk=post_id)
-    Post.objects.filter(id=post_id, slug=slug).update(
-        counted_views=F("counted_views") + 1)
-    post.refresh_from_db()
-    context = {"post": post}
-    return render(request, "travelista/blog/id.html", context)
+# def post_view(request, slug, post_id):
+#     # post = Post.objects.get(id=pid)
+#     post = get_object_or_404(Post, pk=post_id)
+#     Post.objects.filter(id=post_id, slug=slug).update(
+#         counted_views=F("counted_views") + 1)
+#     post.refresh_from_db()
+#     context = {"post": post}
+#     return render(request, "travelista/blog/id.html", context)
+
+def category_view(request, category_type):
+    category_posts = Post.objects.filter(status=1, category=category_type)
+    context = {"category_posts": category_posts}
+    return render(request, "travelista/blog/blog-home.html", context)
