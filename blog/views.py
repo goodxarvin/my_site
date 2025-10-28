@@ -23,6 +23,8 @@ def get_prev_next(post_id: int):
 def single_view(request, slug, post_id):
     post = get_object_or_404(Post, pk=post_id, status=1)
     prev_p, next_p = get_prev_next(post_id)
+    Post.objects.filter(id=post_id, slug=slug).update(
+        counted_views=F("counted_views") + 1)
     # posts = Post.objects.filter(status=1)
     # post = get_object_or_404(posts, pk=post_id) ==> second way for the top code
 
@@ -43,6 +45,10 @@ def home_view(request):
 def test_view(request, name, email, year):
     name_dict = {"name": name, "email": email, "year": year}
     return render(request, "travelista/blog/test.html", name_dict)
+
+
+def test(request):
+    return render(request, "travelista/blog/test.html")
 
 
 def post_view(request, slug, post_id):

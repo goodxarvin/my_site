@@ -1,3 +1,5 @@
+{% load blog_tags %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +10,16 @@
 </head>
 
 <body>
-    <p>{{name}}</p>
-    <p>{{email}}</p>
-    <p>{{year}}</p>
+    <h1>testing page</h1>
+    <p>test: {% adding num1=1000 %}</p>
+    <p>{% post_amount %}</p>
+    <p>{% post_amount as pa%}</p>
+    <p>{{ pa }}</p>
+    {% posts as ps %}
+    {% for post in ps %}
+    <p>{{post.title}}</p>
+    <p>{{ post.content|summerize:63}}</p>
+    {% endfor %}
 </body>
 
 </html>
