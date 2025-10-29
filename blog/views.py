@@ -73,9 +73,9 @@ def home_view(request, **kwargs):
 def search_view(request):
     posts = Post.objects.filter(status=1)
     if request.method == "GET":
-        search_word = request.GET.get("search-element")
-        posts = posts.filter(
-            Q(content__contains=search_word) | Q(title__contains=search_word))
+        if search_word := request.GET.get("search-element"):
+            posts = posts.filter(
+                Q(content__contains=search_word) | Q(title__contains=search_word))
     limited_published_posts = posts[:4]
     context = {"published_posts": posts,
                "limited_published_posts": limited_published_posts}
