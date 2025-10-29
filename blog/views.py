@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from blog.models import Post
 from django.db.models import F, Max, Q
 from django.utils import timezone
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def get_prev_next(post_id: int):
@@ -45,10 +46,18 @@ def home_view(request, **kwargs):
         published_posts = published_posts.filter(
             author__username=kwargs["author_username"])
 
-    limited_published_posts = published_posts[:4]
+    paged_published_posts = Paginator(published_posts, 3)
+    try:
+        page_number = request.GET.get("page-num")
+        paged_published_posts = paged_published_posts.get_page(page_number)
 
-    published_posts_dict = {"published_posts": published_posts,
-                            "limited_published_posts": limited_published_posts}
+    except PageNotAnInteger:
+        paged_published_posts = paged_published_posts.get_page(1)
+
+    except EmptyPage:
+        paged_published_posts = paged_published_posts.get_page(1)
+
+    published_posts_dict = {"paged_published_posts": paged_published_posts}
     return render(request, "travelista/blog/blog-home.html", published_posts_dict)
 
 
