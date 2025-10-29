@@ -94,5 +94,11 @@ def search_view(request):
     except EmptyPage:
         paged_published_posts = paged_published_posts.get_page(1)
 
-    context = {"paged_published_posts": paged_published_posts}
+    qs = request.GET.copy()
+    if "page-num" in qs:
+        qs.pop("page-num")
+    querystring = qs.urlencode()
+
+    context = {"paged_published_posts": paged_published_posts,
+               "querystring": querystring}
     return render(request, "travelista/blog/blog-home.html", context)

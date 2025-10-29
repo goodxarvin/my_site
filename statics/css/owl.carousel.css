@@ -47,8 +47,8 @@
 
 .owl-carousel .owl-item img {
   display: block;
-  width: 300px;
-  height: 200px;
+  max-width: 300px;
+  max-height: 200px;
   -webkit-transform-style: preserve-3d;
 }
 
