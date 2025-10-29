@@ -34,16 +34,16 @@ def single_view(request, slug, post_id):
     return render(request, "travelista/blog/blog-single.html", context)
 
 
-def home_view(request, category_type=None, author_username=None):
+def home_view(request, **kwargs):
     Post.objects.filter(
         published_date__lte=timezone.now()).update(status=1)
     published_posts = Post.objects.filter(status=1)
-    if category_type:
+    if kwargs.get("category_type"):
         published_posts = published_posts.filter(
-            category__category_type=category_type)
-    if author_username:
+            category__category_type=kwargs["category_type"])
+    if kwargs.get("author_username"):
         published_posts = published_posts.filter(
-            author__username=author_username)
+            author__username=kwargs["author_username"])
     published_posts_dict = {"published_posts": published_posts}
     return render(request, "travelista/blog/blog-home.html", published_posts_dict)
 
