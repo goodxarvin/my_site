@@ -7,7 +7,8 @@ urlpatterns = [
     path("", home_view, name="home"),
     path("post-<slug:slug>-<int:post_id>", single_view, name="single"),
     path("categories/<str:category_type>", home_view, name="categories"),
-    path("categories/", home_view)
+    path("categories/", home_view),
+    path("writer/<str:author_username>", home_view, name="author")
     # path("name/<str:name>/email/<str:email>/year/<int:year>", test_view, name="test"),
     # path("post-<slug:slug>-<int:post_id>", post_view, name="details")
 ]

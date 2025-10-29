@@ -106,8 +106,8 @@
 						</ul>
 						<!--because of the magic method (__str__) for first name {{post.author}} will print the username field of the user-->
 						<div class="user-details row">
-							<p class="user-name col-lg-12 col-md-12 col-6"><a href="#">{{post.author.first_name}}
-									:{{post.author.get_full_name}}</a>
+							<p class="user-name col-lg-12 col-md-12 col-6"><a
+									href="{% url 'blog:author' post.author %}">{{post.author.get_full_name}}</a>
 								<span class="lnr lnr-user"></span>
 							</p>
 							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|date:"d M Y"}}
