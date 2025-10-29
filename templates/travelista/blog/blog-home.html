@@ -97,9 +97,10 @@
 						<ul class="tags">
 							{% for cat in post.category.all %}
 							{% if forloop.last %}
-							<li><a href="#">{{cat.category_type}}</a></li>
+							<li><a href="{% url 'blog:categories' cat.category_type %}">{{cat.category_type}}</a></li>
 							{% else %}
-							<li><a href="#">{{cat.category_type}}</a></li>,
+							<li><a href="{% url 'blog:categories' cat.category_type %}">{{cat.category_type}}</a></li>
+							,
 							{% endif %}
 							{% endfor %}
 						</ul>

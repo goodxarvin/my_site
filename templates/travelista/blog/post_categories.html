@@ -3,7 +3,7 @@
     <ul class="cat-list">
         {% for category_type,count in categories.items %}
         <li>
-            <a href="#" class="d-flex justify-content-between">
+            <a href="{% url 'blog:categories' category_type %}" class="d-flex justify-content-between">
                 <p>{{category_type}}</p>
                 <p>{{count}}</p>
             </a>
@@ -37,17 +37,9 @@
 <div class="single-sidebar-widget tag-cloud-widget">
     <h4 class="tagcloud-title">Tag Clouds</h4>
     <ul>
-        <li><a href="#">Technology</a></li>
-        <li><a href="#">Fashion</a></li>
-        <li><a href="#">Architecture</a></li>
-        <li><a href="#">Fashion</a></li>
-        <li><a href="#">Food</a></li>
-        <li><a href="#">Technology</a></li>
-        <li><a href="#">Lifestyle</a></li>
-        <li><a href="#">Art</a></li>
-        <li><a href="#">Adventure</a></li>
-        <li><a href="#">Food</a></li>
-        <li><a href="#">Lifestyle</a></li>
-        <li><a href="#">Adventure</a></li>
+        {% for category in categories %}
+        <li><a href="{% url 'blog:categories' category %}">{{category}}</a></li>
+        {% endfor %}
+
     </ul>
 </div>

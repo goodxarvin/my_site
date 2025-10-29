@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import Post, Category
 from django.db.models import F, Max
 from django.utils import timezone
 
@@ -34,10 +34,13 @@ def single_view(request, slug, post_id):
     return render(request, "travelista/blog/blog-single.html", context)
 
 
-def home_view(request):
+def home_view(request, category_type=None):
     Post.objects.filter(
         published_date__lte=timezone.now()).update(status=1)
     published_posts = Post.objects.filter(status=1)
+    if category_type:
+        published_posts = published_posts.filter(
+            category__category_type=category_type)
     published_posts_dict = {"published_posts": published_posts}
     return render(request, "travelista/blog/blog-home.html", published_posts_dict)
 
@@ -60,7 +63,9 @@ def home_view(request):
 #     context = {"post": post}
 #     return render(request, "travelista/blog/id.html", context)
 
-def category_view(request, category_type):
-    category_posts = Post.objects.filter(status=1, category=category_type)
-    context = {"category_posts": category_posts}
-    return render(request, "travelista/blog/blog-home.html", context)
+# def category_view(request, category_type):
+#     category_posts = Post.objects.filter(
+#         status=1, category__category_type=category_type)
+#     context = {"published_posts": category_posts,
+#                "category_type": category_type}
+#     return render(request, "travelista/blog/blog-home.html", context)
