@@ -85,7 +85,14 @@ def search_view(request):
         if search_word := request.GET.get("search-element"):
             posts = posts.filter(
                 Q(content__contains=search_word) | Q(title__contains=search_word))
-    limited_published_posts = posts[:4]
-    context = {"published_posts": posts,
-               "limited_published_posts": limited_published_posts}
+    paged_published_posts = Paginator(posts, 3)
+    try:
+        page_num = request.GET.get("page-num")
+        paged_published_posts = paged_published_posts.get_page(page_num)
+    except PageNotAnInteger:
+        paged_published_posts = paged_published_posts.get_page(1)
+    except EmptyPage:
+        paged_published_posts = paged_published_posts.get_page(1)
+
+    context = {"paged_published_posts": paged_published_posts}
     return render(request, "travelista/blog/blog-home.html", context)
