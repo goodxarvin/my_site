@@ -1,5 +1,5 @@
 from django.urls import path, include
-from blog.views import single_view, home_view
+from blog.views import single_view, home_view, search_view
 
 app_name = "blog"
 
@@ -8,7 +8,8 @@ urlpatterns = [
     path("post-<slug:slug>-<int:post_id>", single_view, name="single"),
     path("categories/<str:category_type>", home_view, name="categories"),
     path("categories/", home_view),
-    path("writer/<str:author_username>", home_view, name="author")
+    path("writer/<str:author_username>", home_view, name="author"),
+    path("search/", search_view, name="search")
     # path("name/<str:name>/email/<str:email>/year/<int:year>", test_view, name="test"),
     # path("post-<slug:slug>-<int:post_id>", post_view, name="details")
 ]

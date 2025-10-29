@@ -91,7 +91,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-8 posts-list">
-				{% for post in published_posts %}
+				{% for post in limited_published_posts %}
 				<div class="single-post row">
 					<div class="col-lg-3  col-md-3 meta-details">
 						<ul class="tags">
@@ -160,9 +160,9 @@
 			<div class="col-lg-4 sidebar-widgets">
 				<div class="widget-wrap">
 					<div class="single-sidebar-widget search-widget">
-						<form class="search-form" action="#">
-							<input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''"
-								onblur="this.placeholder = 'Search Posts'">
+						<form class="search-form" action="{% url 'blog:search' %}">
+							<input placeholder="Search Posts" name="search-element" type="text"
+								onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'">
 							<button type="submit"><i class="fa fa-search"></i></button>
 						</form>
 					</div>

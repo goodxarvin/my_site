@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from blog.models import Post
-from django.db.models import F, Max
+from django.db.models import F, Max, Q
 from django.utils import timezone
 
 
@@ -44,7 +44,11 @@ def home_view(request, **kwargs):
     if kwargs.get("author_username"):
         published_posts = published_posts.filter(
             author__username=kwargs["author_username"])
-    published_posts_dict = {"published_posts": published_posts}
+
+    limited_published_posts = published_posts[:4]
+
+    published_posts_dict = {"published_posts": published_posts,
+                            "limited_published_posts": limited_published_posts}
     return render(request, "travelista/blog/blog-home.html", published_posts_dict)
 
 
@@ -66,9 +70,13 @@ def home_view(request, **kwargs):
 #     context = {"post": post}
 #     return render(request, "travelista/blog/id.html", context)
 
-# def category_view(request, category_type):
-#     category_posts = Post.objects.filter(
-#         status=1, category__category_type=category_type)
-#     context = {"published_posts": category_posts,
-#                "category_type": category_type}
-#     return render(request, "travelista/blog/blog-home.html", context)
+def search_view(request):
+    posts = Post.objects.filter(status=1)
+    if request.method == "GET":
+        search_word = request.GET.get("search-element")
+        posts = posts.filter(
+            Q(content__contains=search_word) | Q(title__contains=search_word))
+    limited_published_posts = posts[:4]
+    context = {"published_posts": posts,
+               "limited_published_posts": limited_published_posts}
+    return render(request, "travelista/blog/blog-home.html", context)
