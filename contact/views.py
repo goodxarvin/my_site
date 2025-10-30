@@ -1,7 +1,12 @@
 from django.shortcuts import render
+from contact.forms import ContactForm
 
 
 def contact_main_page(request):
-    if request.method == "POST":
-        print(request.POST.get("name"))
-    return render(request, "travelista/contact.html")
+    form = ContactForm(request.POST)
+    if form.is_valid():
+        form.save()
+    form = ContactForm()
+    print(request.method)
+    context = {"form": form}
+    return render(request, "travelista/contact.html", context)
