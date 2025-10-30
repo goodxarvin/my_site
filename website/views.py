@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 from contact.models import Submitted
+from website.forms import SubmitForm
 
 
 def web_view(request):
@@ -21,18 +22,13 @@ def host_view(request):
 
 def test_view(request):
     if request.method == "POST":
-        name = request.POST.get("name")
-        email = request.POST.get("email")
-        subject = request.POST.get("subject")
-        message = request.POST.get("message")
+        contact = SubmitForm(request.POST)
+        if contact.is_valid():
+            contact.save()
 
-    contact = Submitted()
-    contact.name = name
-    contact.email = email
-    contact.subject = subject
-    contact.message = message
-    contact.save()
+            return HttpResponse(f"successful")
+        else:
+            return HttpResponse("invalid")
 
-    if request.method == "GET":
-        print("get")
-    return render(request, 'website/test.html', {"name": "arvin", "age": 16})
+    contact = SubmitForm()
+    return render(request, 'website/test.html', {"forms": contact})
