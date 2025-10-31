@@ -23,10 +23,12 @@ from django.contrib.sitemaps.views import sitemap
 from home.sitemaps import HomeStaticViewSitemap
 from contact.sitemaps import ContactStaticViewSitemap
 from about.sitemaps import AboutStaticViewSitemap
+from blog.sitemaps import BlogSitemap
 
 sitemaps = {"home": HomeStaticViewSitemap,
             "contact": ContactStaticViewSitemap,
-            "about": AboutStaticViewSitemap}
+            "about": AboutStaticViewSitemap,
+            "blog": BlogSitemap}
 
 
 urlpatterns = [
