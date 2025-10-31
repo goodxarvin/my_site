@@ -11,3 +11,6 @@ class SubmittedAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Submitted, SubmittedAdmin)
+
+
+
