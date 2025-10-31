@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     "about.apps.AboutConfig",
     "contact.apps.ContactConfig",
     "blog.apps.BlogConfig",
-    "elements.apps.ElementsConfig"
+    "elements.apps.ElementsConfig",
+    "django.contrib.humanize"
 ]
 
 MIDDLEWARE = [

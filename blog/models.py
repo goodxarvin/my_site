@@ -22,7 +22,7 @@ class Post(models.Model):
     published_date = models.DateTimeField(null=True, blank=True)
     created_time = models.DateTimeField(auto_now_add=True)
     updated_time = models.DateTimeField(auto_now=True)
-    slug = models.SlugField(null=True)
+    slug = models.SlugField(null=True, blank=True)
 
     def save(self, *args, **kwargs):
         if not self.slug:

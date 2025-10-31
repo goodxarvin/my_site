@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load humanize %}
 {% load blog_tags %}
 {% block container %}
 
@@ -110,8 +111,9 @@
 									href="{% url 'blog:author' post.author %}">{{post.author.get_full_name}}</a>
 								<span class="lnr lnr-user"></span>
 							</p>
-							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|date:"d M Y"}}
+							<p class="date col-lg-12 col-md-12 col-6"><a href="#">{{post.published_date|naturaltime}}
 								</a> <span class="lnr lnr-calendar-full"></span></p>
+							<!--<p>{{12000000|intword}}</p> -->
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">{{post.counted_views}}</a> <span
 									class="lnr lnr-eye"></span></p>
 							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span
