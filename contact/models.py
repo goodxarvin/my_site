@@ -3,7 +3,7 @@ from django.db import models
 
 class Submitted(models.Model):
     name = models.CharField(max_length=20)
-    email = models.EmailField()
+    email = models.EmailField(blank=True, null=True)
     subject = models.CharField(max_length=60)
     message = models.TextField()
     created_time = models.DateTimeField(auto_now_add=True)
