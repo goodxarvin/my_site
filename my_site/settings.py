@@ -49,12 +49,16 @@ INSTALLED_APPS = [
     "django.contrib.sitemaps",
     "robots",
     "debug_toolbar",
-    "taggit"
+    "taggit",
+    "django_summernote"
 ]
 
 SITE_ID = 2
 ROBOTS_USE_HOST = False
 ROBOTS_USE_SITEMAP = False
+
+# summernote config
+SUMMERNOTE_THEME = "bs4"
 
 
 MIDDLEWARE = ["django.middleware.security.SecurityMiddleware",
@@ -155,3 +159,6 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 #     "127.0.0.1",
 
 # ]
+
+
+# X_FRAME_OPTIONS = "SAMEORIGIN"
