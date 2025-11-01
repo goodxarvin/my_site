@@ -34,12 +34,3 @@
         You can unsubscribe at any time
     </p>
 </div>
-<div class="single-sidebar-widget tag-cloud-widget">
-    <h4 class="tagcloud-title">Tag Clouds</h4>
-    <ul>
-        {% for category in categories %}
-        <li><a href="{% url 'blog:categories' category %}">{{category}}</a></li>
-        {% endfor %}
-
-    </ul>
-</div>

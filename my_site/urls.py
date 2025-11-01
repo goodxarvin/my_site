@@ -24,6 +24,7 @@ from home.sitemaps import HomeStaticViewSitemap
 from contact.sitemaps import ContactStaticViewSitemap
 from about.sitemaps import AboutStaticViewSitemap
 from blog.sitemaps import BlogSitemap
+from debug_toolbar.toolbar import debug_toolbar_urls
 
 sitemaps = {"home": HomeStaticViewSitemap,
             "contact": ContactStaticViewSitemap,
@@ -50,3 +51,6 @@ urlpatterns = [
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+urlpatterns += debug_toolbar_urls()
+
+

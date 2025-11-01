@@ -58,9 +58,7 @@
 					</div>
 					<div class="col-lg-9 col-md-9">
 						<h3 class="mt-20 mb-20">{{post.title}}</h3>
-						{% for par in paragraph %}
-						<p>{{par}}</p>
-						{% endfor %}
+						<p>{{post.content|safe}}</p>
 					</div>
 					<div class="col-lg-12">
 						<div class="row mt-30 mb-30">
@@ -278,6 +276,17 @@
 
 
 					{% get_categories %}
+
+
+
+					<div class="single-sidebar-widget tag-cloud-widget">
+						<h4 class="tagcloud-title">Tag Clouds</h4>
+						<ul>
+							{% for tag in post.tag.all %}
+							<li><a href="{% url 'blog:tags' tag.slug %}">{{tag.name}}</a></li>
+							{% endfor %}
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>

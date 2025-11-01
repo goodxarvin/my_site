@@ -220,6 +220,16 @@
 
 					{% get_categories %}
 
+
+					<div class="single-sidebar-widget tag-cloud-widget">
+						<h4 class="tagcloud-title">Tag Clouds</h4>
+						<ul>
+							{% for tag in paged_published_posts.tag.all %}
+							<li>{{tag.name}}</li>
+							{% endfor %}
+						</ul>
+					</div>
+
 				</div>
 			</div>
 		</div>

@@ -39,3 +39,5 @@ def get_categories():
             category=category).count()
 
     return {"categories": categories_dict}
+
+

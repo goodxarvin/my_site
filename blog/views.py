@@ -28,10 +28,7 @@ def single_view(request, slug, post_id):
         counted_views=F("counted_views") + 1)
     # posts = Post.objects.filter(status=1)
     # post = get_object_or_404(posts, pk=post_id) ==> second way for the top code
-
-    paragraph = post.content.split("\n")
-    context = {"post": post, "paragraph": paragraph,
-               "next": next_p, "prev": prev_p}
+    context = {"post": post, "next": next_p, "prev": prev_p}
     return render(request, "travelista/blog/blog-single.html", context)
 
 
@@ -45,6 +42,10 @@ def home_view(request, **kwargs):
     if kwargs.get("author_username"):
         published_posts = published_posts.filter(
             author__username=kwargs["author_username"])
+
+    if kwargs.get("tag_name"):
+        published_posts = published_posts.filter(
+            tag__name__in=[kwargs["tag_name"]])
 
     paged_published_posts = Paginator(published_posts, 3)
     try:
