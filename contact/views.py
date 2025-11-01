@@ -14,6 +14,7 @@ def contact_main_page(request):
         else:
             messages.add_message(request, messages.ERROR,
                                  "request didn't saved")
-    form = ContactForm()
+    else:
+        form = ContactForm()
     context = {"form": form}
     return render(request, "travelista/contact.html", context)
