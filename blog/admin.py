@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django_summernote.admin import SummernoteModelAdmin
-from blog.models import Post, Category
+from blog.models import Post, Category, Comment
 
 
 @admin.register(Post)
@@ -21,3 +21,8 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ["category_type"]
 
 # admin.site.register(Post, PostAdmin)
+
+
+@admin.register(Comment)
+class Comment(admin.ModelAdmin):
+    pass

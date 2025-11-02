@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from blog.models import Post
+from blog.models import Post, Comment
 from django.db.models import F, Max, Q
 from django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
@@ -26,9 +26,11 @@ def single_view(request, slug, post_id):
     prev_p, next_p = get_prev_next(post_id)
     Post.objects.filter(id=post_id, slug=slug).update(
         counted_views=F("counted_views") + 1)
+    comments = Comment.objects.filter(post=post.id)
     # posts = Post.objects.filter(status=1)
     # post = get_object_or_404(posts, pk=post_id) ==> second way for the top code
-    context = {"post": post, "next": next_p, "prev": prev_p}
+    context = {"post": post, "next": next_p,
+               "prev": prev_p, "comments": comments}
     return render(request, "travelista/blog/blog-single.html", context)
 
 
