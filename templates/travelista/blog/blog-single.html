@@ -47,8 +47,8 @@
 									class="lnr lnr-calendar-full"></span></p>
 							<p class="view col-lg-12 col-md-12 col-6"><a href="#">1.2M Views</a> <span
 									class="lnr lnr-eye"></span></p>
-							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">06 Comments</a> <span
-									class="lnr lnr-bubble"></span></p>
+							<p class="comments col-lg-12 col-md-12 col-6"><a href="#">{{comments.count}} comments</a>
+								<span class="lnr lnr-bubble"></span></p>
 							<ul class="social-links col-lg-12 col-md-12 col-6">
 								<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -162,6 +162,9 @@
 				</div>
 
 				<div class="comments-area">
+					{% if comments %}
+					<!--first way: {{comments|length}}-->
+					<!-- or: <h4>{% get_comment_number post.id %} comments</h4>-->
 					<h4>{{comments.count}} comments</h4>
 					{% for comment in comments %}
 					<div class="comment-list">
@@ -184,6 +187,10 @@
 						</div>
 					</div>
 					{% endfor %}
+					{% else %}
+					<h4>no comments here</h4>
+					{% endif %}
+
 				</div>
 
 				<div class="comment-form">

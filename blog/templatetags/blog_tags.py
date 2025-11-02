@@ -1,11 +1,16 @@
 from django import template
-from blog.models import Post, Category
+from blog.models import Post, Category, Comment
 register = template.Library()
 
 
 @register.simple_tag(name="adding")
 def add(num1=100, num2=10):
     return num1 + num2
+
+
+@register.simple_tag(name="get_comment_number")
+def get_comment_num(post_id):
+    return Comment.objects.filter(post=post_id, approved=True).count()
 
 
 @register.simple_tag(name="post_amount")
@@ -39,5 +44,3 @@ def get_categories():
             category=category).count()
 
     return {"categories": categories_dict}
-
-
