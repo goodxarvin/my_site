@@ -1,7 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from blog.models import Post, Comment
+from blog.forms import CommentForm
 from django.db.models import F, Max, Q
 from django.utils import timezone
+from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
@@ -22,6 +24,19 @@ def get_prev_next(post_id: int):
 
 
 def single_view(request, slug, post_id):
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            clean_data = form.save(commit=False)
+            clean_data.post = Post.objects.get(id=post_id)
+            clean_data.save()
+            messages.add_message(
+                request, messages.SUCCESS, "your comment added successfully")
+        else:
+            messages.add_message(
+                request, messages.ERROR, "something went wrong when trying to post your comment")
+    else:
+        form = CommentForm()
     post = get_object_or_404(Post, pk=post_id, status=1)
     prev_p, next_p = get_prev_next(post_id)
     Post.objects.filter(id=post_id, slug=slug).update(
@@ -30,7 +45,8 @@ def single_view(request, slug, post_id):
     # posts = Post.objects.filter(status=1)
     # post = get_object_or_404(posts, pk=post_id) ==> second way for the top code
     context = {"post": post, "next": next_p,
-               "prev": prev_p, "comments": comments}
+               "prev": prev_p, "comments": comments,
+               "form": form}
     return render(request, "travelista/blog/blog-single.html", context)
 
 
