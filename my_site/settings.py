@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     "about.apps.AboutConfig",
     "contact.apps.ContactConfig",
     "blog.apps.BlogConfig",
+    "user_management.apps.UserManagementConfig",
     "elements.apps.ElementsConfig",
     "django.contrib.humanize",
     "django_extensions",
