@@ -171,3 +171,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 MULTI_CAPTCHA_ADMIN = {
     'engine': 'simple-captcha',
 }
+
+
+# required for the decorator 'login_required()' to recognize the path of login
+
+LOGIN_URL = "user:login"

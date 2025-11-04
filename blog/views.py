@@ -5,6 +5,7 @@ from django.db.models import F, Max, Q
 from django.utils import timezone
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
 
 def get_prev_next(post_id: int):
@@ -50,6 +51,7 @@ def single_view(request, slug, post_id):
     return render(request, "travelista/blog/blog-single.html", context)
 
 
+@login_required()
 def home_view(request, **kwargs):
     Post.objects.filter(
         published_date__lte=timezone.now()).update(status=1)

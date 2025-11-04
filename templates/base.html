@@ -43,6 +43,7 @@
                         <ul>
                             {% if request.user.is_authenticated %}
                             <li><a href="{% url 'home:index' %}">you're logged in as {{request.user.username}}</a></li>
+                            <li><a href="{% url 'user:logout' %}">Logout</a></li>
                             {% else %}
                             <li><a href="{% url 'user:login' %}">Login</a></li>
                             <li><a href="{% url 'user:signup' %}">Signup</a></li>
