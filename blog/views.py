@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from blog.models import Post, Comment
 from blog.forms import CommentForm
 from django.db.models import F, Max, Q
@@ -6,6 +6,7 @@ from django.utils import timezone
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
+from django.urls import reverse
 
 
 def get_prev_next(post_id: int):
@@ -24,6 +25,18 @@ def get_prev_next(post_id: int):
     return prev_post, next_post
 
 
+def handle_login(request, post, post_id, slug):
+    prev_p, next_p = get_prev_next(post_id)
+    Post.objects.filter(id=post_id, slug=slug).update(
+        counted_views=F("counted_views") + 1)
+    comments = Comment.objects.filter(post=post.id, approved=1)
+    # posts = Post.objects.filter(status=1)
+    # post = get_object_or_404(posts, pk=post_id) ==> second way for the top code
+    context = {"post": post, "next": next_p,
+               "prev": prev_p, "comments": comments}
+    return render(request, "travelista/blog/blog-single.html", context)
+
+
 def single_view(request, slug, post_id):
     if request.method == "POST":
         form = CommentForm(request.POST)
@@ -39,19 +52,16 @@ def single_view(request, slug, post_id):
     else:
         form = CommentForm()
     post = get_object_or_404(Post, pk=post_id, status=1)
-    prev_p, next_p = get_prev_next(post_id)
-    Post.objects.filter(id=post_id, slug=slug).update(
-        counted_views=F("counted_views") + 1)
-    comments = Comment.objects.filter(post=post.id, approved=1)
-    # posts = Post.objects.filter(status=1)
-    # post = get_object_or_404(posts, pk=post_id) ==> second way for the top code
-    context = {"post": post, "next": next_p,
-               "prev": prev_p, "comments": comments,
-               "form": form}
-    return render(request, "travelista/blog/blog-single.html", context)
+    if not post.login_require:
+        return handle_login(request, post, post_id, slug)
+    elif request.user.is_authenticated:
+        return handle_login(request, post, post_id, slug)
+    else:
+        messages.add_message(request, messages.INFO,
+                             "you need to login to see this post")
+        return HttpResponseRedirect(reverse("user:login"))
 
 
-@login_required()
 def home_view(request, **kwargs):
     Post.objects.filter(
         published_date__lte=timezone.now()).update(status=1)

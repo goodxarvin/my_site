@@ -200,6 +200,18 @@
 						{% csrf_token %}
 						<!-- you can use the input type=hidden and value=post_id for this part-->
 						<div class="form-group form-inline">
+							{% if request.user.is_authenticated %}
+							<div class="form-group col-lg-6 col-md-12 name">
+								<input type="text" class="form-control" name="name" value="{{request.user.username}}"
+									placeholder="Enter Name" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Enter Name'" readonly>
+							</div>
+							<div class="form-group col-lg-6 col-md-12 email">
+								<input type="email" class="form-control" name="email" value="{{request.user.email}}"
+									placeholder="Enter email address" onfocus="this.placeholder = ''"
+									onblur="this.placeholder = 'Enter email address'" readonly>
+							</div>
+							{% else %}
 							<div class="form-group col-lg-6 col-md-12 name">
 								<input type="text" class="form-control" name="name" placeholder="Enter Name"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter Name'">
@@ -208,6 +220,8 @@
 								<input type="email" class="form-control" name="email" placeholder="Enter email address"
 									onfocus="this.placeholder = ''" onblur="this.placeholder = 'Enter email address'">
 							</div>
+							{% endif %}
+
 						</div>
 						<div class="form-group">
 							<input type="text" class="form-control" name="subject" placeholder="Subject"

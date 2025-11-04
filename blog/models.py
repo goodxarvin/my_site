@@ -25,6 +25,7 @@ class Post(models.Model):
     created_time = models.DateTimeField(auto_now_add=True)
     updated_time = models.DateTimeField(auto_now=True)
     slug = models.SlugField(null=True, blank=True)
+    login_require = models.BooleanField(default=False)
 
     def save(self, *args, **kwargs):
         if not self.slug:
