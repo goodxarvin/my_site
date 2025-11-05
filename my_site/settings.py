@@ -53,7 +53,10 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "taggit",
     "django_summernote",
-    "captcha"
+    "captcha",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount"
 ]
 
 SITE_ID = 2
@@ -72,6 +75,7 @@ MIDDLEWARE = ["django.middleware.security.SecurityMiddleware",
               "django.contrib.auth.middleware.AuthenticationMiddleware",
               "django.contrib.messages.middleware.MessageMiddleware",
               "django.middleware.clickjacking.XFrameOptionsMiddleware",
+              "allauth.account.middleware.AccountMiddleware"
               ]
 
 ROOT_URLCONF = "my_site.urls"
@@ -176,3 +180,19 @@ MULTI_CAPTCHA_ADMIN = {
 # required for the decorator 'login_required()' to recognize the path of login
 
 LOGIN_URL = "user:login"
+
+
+# to redirect to the main page with django.contrib.auth
+
+LOGIN_REDIRECT_URL = "/"
+
+
+# allauth settings for login both with username or email
+
+ACCOUNT_LOGIN_METHODS = {"email", "username"}
+ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
+ACCOUNT_EMAIL_VERIFICATION = "none"
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
