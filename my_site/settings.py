@@ -193,7 +193,13 @@ ACCOUNT_LOGIN_METHODS = {"email", "username"}
 ACCOUNT_SIGNUP_FIELDS = ["email*", "username*", "password1*", "password2*"]
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
+# allauth settings for expiring the reset password link
+
+PASSWORD_RESET_TIMEOUT = 600  # 10 minutes
+
 # sending forget password when testing
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 AUTHENTICATION_BACKENDS = (
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
