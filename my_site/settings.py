@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     "about.apps.AboutConfig",
     "contact.apps.ContactConfig",
     "blog.apps.BlogConfig",
-    "user_management.apps.UserManagementConfig",
     "elements.apps.ElementsConfig",
     "django.contrib.humanize",
     "django_extensions",
@@ -56,10 +55,12 @@ INSTALLED_APPS = [
     "captcha",
     "allauth",
     "allauth.account",
-    "allauth.socialaccount"
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.google",
+    "user_management.apps.UserManagementConfig",
 ]
 
-SITE_ID = 2
+SITE_ID = 1
 ROBOTS_USE_HOST = False
 ROBOTS_USE_SITEMAP = False
 
@@ -179,7 +180,7 @@ MULTI_CAPTCHA_ADMIN = {
 
 # required for the decorator 'login_required()' to recognize the path of login
 
-LOGIN_URL = "user:login"
+# LOGIN_URL = "user:login"
 
 
 # to redirect to the main page with django.contrib.auth
@@ -205,6 +206,13 @@ AUTHENTICATION_BACKENDS = (
     'allauth.account.auth_backends.AuthenticationBackend',
 )
 
+# session not expire when browser is closed
+
+# SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+# SESSION_COOKIE_AGE = 3600 * 24
+# SESSION_SAVE_EVERY_REQUEST = True
+
+
 # realy send forget password in practice
 
 # EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
@@ -215,3 +223,17 @@ AUTHENTICATION_BACKENDS = (
 # EMAIL_HOST_USER = '#'
 # EMAIL_HOST_PASSWORD = '#'
 # DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+
+
+# continue with goolge
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'APP': {
+            'client_id': '#',
+            'secret': '#',
+            'key': ''
+        }
+    }
+}
