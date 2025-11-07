@@ -1,10 +1,8 @@
-# from django.urls import path
-# from user_management.views import logout_view
+from django.urls import path
+from user_management.views import CustomLoginView
 
-# app_name = "user"
+app_name = "user"
 
-# urlpatterns = [
-
-#     path("logout", logout_view, name="logout"),
-
-# ]
+urlpatterns = [
+    path("accounts/login/", CustomLoginView.as_view(), name="account_login"),
+]

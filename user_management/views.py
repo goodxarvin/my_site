@@ -4,6 +4,16 @@
 # from django.contrib.auth.forms import AuthenticationForm  # , UserCreationForm
 # from django.contrib import messages
 # from user_management.forms import UserForm
+from allauth.account.views import LoginView
+from django.contrib import messages
+
+
+class CustomLoginView(LoginView):
+    def form_invalid(self, form):
+        for field, errors in form.errors.items():
+            for error in errors:
+                messages.error(self.request, f'wrong username or password')
+        return super().form_invalid(form)
 
 
 # def login_view(request):
@@ -23,7 +33,7 @@
 
 #             else:
 #                 messages.add_message(request, messages.ERROR,
-#                                      "wrong username or password")
+#                                     "wrong username or password")
 #     else:
 #         messages.add_message(
 #             request, messages.INFO, "you're already logged in please logout to proceed the following task")
