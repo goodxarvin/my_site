@@ -58,6 +58,10 @@ INSTALLED_APPS = [
     "allauth.socialaccount",
     "allauth.socialaccount.providers.google",
     "user_management.apps.UserManagementConfig",
+    "django_otp",  # for 2fa
+    "django_otp.plugins.otp_totp",  # for 2fa
+    "django_otp.plugins.otp_static",  # for 2fa
+    "allauth_2fa",
 ]
 
 SITE_ID = 1
@@ -74,6 +78,7 @@ MIDDLEWARE = ["django.middleware.security.SecurityMiddleware",
               "debug_toolbar.middleware.DebugToolbarMiddleware",
               "django.middleware.csrf.CsrfViewMiddleware",
               "django.contrib.auth.middleware.AuthenticationMiddleware",
+              'django_otp.middleware.OTPMiddleware',
               "django.contrib.messages.middleware.MessageMiddleware",
               "django.middleware.clickjacking.XFrameOptionsMiddleware",
               "allauth.account.middleware.AccountMiddleware"
@@ -185,7 +190,7 @@ MULTI_CAPTCHA_ADMIN = {
 
 # to redirect to the main page with django.contrib.auth
 
-LOGIN_REDIRECT_URL = "/"
+LOGIN_REDIRECT_URL = "user:account_profile"
 
 
 # allauth settings for login both with username or email
@@ -237,3 +242,8 @@ SOCIALACCOUNT_PROVIDERS = {
         }
     }
 }
+
+
+# 2fa adapter
+
+ACCOUNT_ADAPTER = 'allauth_2fa.adapter.OTPAdapter'

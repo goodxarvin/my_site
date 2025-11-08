@@ -45,6 +45,7 @@ urlpatterns = [
     path("robots.txt", include("robots.urls")),
     path('summernote/', include('django_summernote.urls')),
     path("accounts/", include("allauth.urls")),
+    path('accounts/two-factor/', include('allauth_2fa.urls')),
     path("user-management/", include("user_management.urls")),
 ]
 

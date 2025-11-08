@@ -1,6 +1,6 @@
-# from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect
 # from django.contrib.auth import authenticate, login, logout
-# from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required
 # from django.contrib.auth.forms import AuthenticationForm  # , UserCreationForm
 # from django.contrib import messages
 # from user_management.forms import UserForm
@@ -22,6 +22,11 @@ class CustomSignUpview(SignupView):
             for error in errors:
                 messages.error(self.request, f"{error}")
         return super().form_invalid(form)
+
+
+@login_required()
+def profile_view(request):
+    return render(request, "account/profile.html")
 
 
 # def login_view(request):
