@@ -56,7 +56,16 @@
 
             <button class="btn btn-sm btn-outline-primary w-100"
               onclick="window.location.href='{% url 'home:index' %}'">main page</button>
-            <button class="btn btn-sm btn-primary w-100 ml-2">activate 2fa</button>
+            <button class="btn btn-sm btn-outline-primary w-100"
+              onclick="window.location.href='{% url 'account_logout' %}'">logout</button>
+            {% if user.otp_device %}
+            <button class="btn btn-sm btn-primary w-100 ml-2"
+              onclick="window.location.href='{% url 'two-factor-remove' %}'">deactivate 2fa</button>
+            {% else %}
+            <button class="btn btn-sm btn-primary w-100 ml-2"
+              onclick="window.location.href='{% url 'two-factor-setup' %}'">activate 2fa</button>
+            {% endif %}
+
 
 
           </div>

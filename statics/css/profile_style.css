@@ -73,3 +73,7 @@ body {
 .justify-content-between {
   justify-content: space-around !important;
 }
+
+.w-100 {
+  margin-left: 5px;
+}

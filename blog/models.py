@@ -1,6 +1,7 @@
 from django.db import models
 from django.utils.text import slugify
 from django.contrib.auth.models import User
+from django.conf import settings
 from django.urls import reverse
 from taggit.managers import TaggableManager
 
@@ -14,7 +15,8 @@ class Category(models.Model):
 
 class Post(models.Model):
     image = models.ImageField(upload_to="blog/", default="blog/default.jpg")
-    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    author = models.ForeignKey(
+        settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
     tag = TaggableManager()
     category = models.ManyToManyField(Category)
     title = models.CharField(max_length=255)

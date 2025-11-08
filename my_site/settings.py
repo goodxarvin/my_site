@@ -247,3 +247,9 @@ SOCIALACCOUNT_PROVIDERS = {
 # 2fa adapter
 
 ACCOUNT_ADAPTER = 'allauth_2fa.adapter.OTPAdapter'
+
+
+# adding another field for sign up
+
+
+AUTH_USER_MODEL = "user_management.CustomUser"
