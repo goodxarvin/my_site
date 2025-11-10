@@ -195,3 +195,49 @@ input:-moz-placeholder {
 		padding: 30px 45px 30px 10px;
 	}
 }
+
+
+
+
+.select2-container--classic .select2-selection--single {
+	appearance: none;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	background-color: #fff;
+	border: 1px solid #ccc;
+	border-radius: 6px;
+	height: 45px;
+	padding: 5px 10px;
+	font-size: 15px;
+	color: #333;
+}
+
+.select2-container--classic .select2-selection__arrow {
+	height: 45px;
+	right: 10px;
+}
+
+.select2-container--classic .select2-dropdown {
+	border-radius: 6px;
+	border: 1px solid #ccc;
+	background-color: #fff;
+}
+
+.select2-container--classic .select2-results__option--highlighted {
+	background-color: #007bff;
+	color: white;
+}
+
+
+.gender-select {
+	appearance: none;
+	/* برای اکثر مرورگرها */
+	-webkit-appearance: none;
+	/* کروم، سافاری */
+	-moz-appearance: none;
+	/* فایرفاکس */
+	background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0 0 4 5'%3E%3Cpath%20fill='none'%20stroke='%23333'%20d='M2%200L0%202h4z'/%3E%3C/svg%3E");
+	/* فلش سفارشی */
+	background-repeat: no-repeat;
+	background-position: right 10px center;
+}

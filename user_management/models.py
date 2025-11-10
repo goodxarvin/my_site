@@ -3,9 +3,10 @@ from django.contrib.auth.models import AbstractUser
 
 
 class CustomUser(AbstractUser):
-    gender_choices = [
-        ("m", 'male'),
-        ("f", "female")
-    ]
+
+    GENDER_CHOICES = (
+        ("M", 'male'),
+        ("F", "female")
+    )
     gender = models.CharField(
-        max_length=1, choices=gender_choices, null=True, blank=True)
+        max_length=1, choices=GENDER_CHOICES, null=True, blank=True)
