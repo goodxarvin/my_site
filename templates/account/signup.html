@@ -14,9 +14,21 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Poppins:wght@600;700&amp;display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+
 </head>
 
 <body id="im2n" class="gjs-t-body body">
+    {% if messages %}
+    <div id="toast-container">
+        {% for message in messages %}
+        <div class="toast show toast-{{ message.tags }}">
+            <span>{{ message }}</span>
+            <button class="close-btn" onclick="closeToast(this)">×</button>
+        </div>
+        {% endfor %}
+    </div>
+    {% endif %}
     <header id="if9pd" class="header-wrapper">
         <div id="i8fgd" class="header-container"><a href="{% url 'home:index' %}" aria-label="Home"
                 class="group brand-link">
@@ -186,6 +198,8 @@
             });
         })();
     </script>
+    <script src="{% static 'js/show_message.js' %}"></script>
+
 </body>
 
 </html>
