@@ -1,81 +1,196 @@
 {% load static %}
 
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>sign up</title>
-    <!-- Mobile Specific Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <!-- Font-->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/nunito-font.css' %}">
-    <!-- Main Style Css -->
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-    <link rel="stylesheet" href="{% static 'css/reg_style.css' %}" />
-    <link rel="stylesheet" href="{% static 'css/messages.css' %}">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign up</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Poppins:wght@600;700&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/reg_style.css' %}">
 </head>
 
-<body class="form-v9">
-
-    {% if messages %}
-    <div id="toast-container">
-        {% for message in messages %}
-        <div class="toast show toast-{{ message.tags }}">
-            <span>{{ message }}</span>
-            <button class="close-btn" onclick="closeToast(this)">×</button>
+<body id="im2n" class="gjs-t-body body">
+    <header id="if9pd" class="header-wrapper">
+        <div id="i8fgd" class="header-container"><a href="#" aria-label="Home" class="group brand-link">
+                <div class="brand-text"></div>
+            </a>
+            <div id="ig8uug" class="navbar">
+                <div data-gjs="navbar" id="iclciu" class="navbar-cnt"><a href="/" class="navbar-brand"><img id="izcw3g"
+                            src="{% static 'img/logo.png' %}" /></a>
+                    <div id="ibzff5" class="navbar-menu-toggle">
+                        <div data-type-icon id="itwj47" class="gjs-icon"><svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24">
+                                <path fill="currentColor" d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path>
+                            </svg></div>
+                    </div>
+                    <div data-gjs="navbar-items" class="navbar-items-c">
+                        <nav id="iwnsa2" class="navbar-menu-nav"><a id="igtcl">Home</a><a>About</a><a>Contact</a></nav>
+                    </div>
+                </div>
+            </div>
         </div>
-        {% endfor %}
-    </div>
-    {% endif %}
-    <div class="page-content">
-        <div class="form-v9-content" style="background-image: url('{% static "img/form-v9.jpg" %}')">
-            <form class="form-detail" action="" method="post">
-                {% csrf_token %}
-                <h2>Registration Form</h2>
-                <div class="form-row-total">
-                    <div class="form-row">
-                        <input type="text" name="username" id="full-name" class="input-text" placeholder="Your Username"
-                            required>
+    </header>
+    <main id="icgbd" class="main-content">
+        <section id="i3agl" class="section-container">
+            <div id="ih5hk" class="grid-layout">
+                <div class="intro-column">
+                    <h1 id="ip145" class="gjs-t-h1 hero-title">Create your account</h1>
+                    <p id="i8p0s" class="hero-subtitle">
+                        Join our community in a few easy steps. Your information is secure and never shared. All fields
+                        are
+                        required.
+                    </p>
+                    <ul id="i10t3" class="benefits-list">
+                        <li class="benefit-item"><img
+                                src="https://api.iconify.design/lucide-badge-check.svg?color=%2316a34a" alt=""
+                                class="benefit-icon" /><span>Access personalized features and updates</span></li>
+                        <li class="benefit-item"><img src="https://api.iconify.design/lucide-shield.svg?color=%2310b981"
+                                alt="" class="benefit-icon" /><span>Privacy-first and secure authentication</span></li>
+                        <li class="benefit-item"><img
+                                src="https://api.iconify.design/lucide-sparkles.svg?color=%233b82f6" alt=""
+                                class="benefit-icon" /><span>Clean and simple experience</span></li>
+                    </ul>
+                </div>
+                <div class="form-column">
+                    <div class="gjs-t-border form-card">
+                        <div id="iemzn" class="form-padding">
+                            <form method="post" action="#" novalidate="" aria-describedby="formDescription"
+                                class="signup-form"><span id="formDescription" class="form-description">Signup form with
+                                    five fields: username, email, gender,
+                                    password and password confirmation</span>
+                                <div class="field-group"><label for="username"
+                                        class="label-username">Username</label><input type="text" id="username"
+                                        name="username" required placeholder="e.g., alex.fernandez"
+                                        autocomplete="username" aria-describedby="usernameHelp usernameError"
+                                        class="input-username" />
+                                    <p id="usernameHelp" class="help-username">Choose a unique username (3–20
+                                        characters).</p>
+                                    <div aria-live="polite" id="usernameError" class="validation-username"></div>
+                                </div>
+                                <div class="field-group"><label for="email" id="i2wyz"
+                                        class="label-email">Email</label><input type="email" id="email" name="email"
+                                        required placeholder="you@example.com" autocomplete="email"
+                                        aria-describedby="emailHelp emailError" class="input-email" />
+                                    <p id="emailHelp" class="help-email">We’ll send a confirmation link to this address.
+                                    </p>
+                                    <div aria-live="polite" id="emailError" class="validation-email"></div>
+                                </div>
+                                <div id="i9j4y" class="field-group"><label for="gender" id="i83by"
+                                        class="label-gender">Gender</label>
+                                    <div id="i9n8f" class="select-wrapper"><select type="text" id="gender" name="gender"
+                                            required aria-describedby="genderHelp genderError"
+                                            aria-label="Select your gender" class="select-gender">
+                                            <option value="" disabled selected id="ioqew">Select your gender</option>
+                                            <option value="female" id="ime7h">Female</option>
+                                            <option value="male" id="id1xp">Male</option>
+                                        </select><span id="i6dlz" class="select-icon"><img
+                                                src="https://api.iconify.design/lucide-chevron-down.svg?color=%236b7280"
+                                                alt="" id="i82qf" class="icon-image" /></span></div>
+                                    <p id="genderHelp" class="help-gender">Used for personalization. You can change this
+                                        later.</p>
+                                    <div aria-live="polite" id="genderError" class="validation-gender"></div>
+                                </div>
+                                <div class="field-group"><label for="password" class="label-password">Password</label>
+                                    <div class="password-wrapper"><input type="password" id="password" name="password"
+                                            required placeholder="At least 8 characters" autocomplete="new-password"
+                                            aria-describedby="passwordHelp passwordError"
+                                            class="input-password" /><button type="button"
+                                            aria-label="Toggle password visibility" data-toggle="password"
+                                            data-target="password" class="password-toggle-button"><img
+                                                src="https://api.iconify.design/lucide-eye.svg?color=%236b7280" alt=""
+                                                class="password-toggle-icon" /></button></div>
+                                    <p id="passwordHelp" class="help-password">Use at least 8 characters with a mix of
+                                        letters and
+                                        numbers.</p>
+                                    <div aria-live="polite" id="passwordError" class="validation-password"></div>
+                                </div>
+                                <div class="field-group"><label for="password_confirmation"
+                                        class="label-password-confirmation">Password
+                                        confirmation</label>
+                                    <div class="password-confirmation-wrapper"><input type="password"
+                                            id="password_confirmation" name="password_confirmation" required
+                                            placeholder="Re-enter your password" autocomplete="new-password"
+                                            aria-describedby="passwordConfirmationHelp passwordConfirmationError"
+                                            class="input-password-confirmation" /><button type="button"
+                                            aria-label="Toggle password confirmation visibility" data-toggle="password"
+                                            data-target="password_confirmation"
+                                            class="password-confirmation-toggle-button"><img
+                                                src="https://api.iconify.design/lucide-eye.svg?color=%236b7280" alt=""
+                                                class="password-toggle-icon" /></button></div>
+                                    <p id="passwordConfirmationHelp" class="help-password-confirmation">Must match the
+                                        password exactly.
+                                    </p>
+                                    <div aria-live="polite" id="passwordConfirmationError"
+                                        class="validation-password-confirmation"></div>
+                                </div>
+                                <div class="actions-group"><button type="submit" id="ispl2h"
+                                        class="gjs-t-button primary-button">
+                                        Sign up
+                                    </button>
+                                    <div class="divider-row">
+                                        <div class="divider-line"></div><span>or</span>
+                                        <div class="divider-line"></div>
+                                    </div>
+                                    <p class="signin-prompt">
+                                        Already have an account?
+                                        <a href="#" id="iyqmx5" class="gjs-t-link signin-link">Sign in</a>
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    <div class="form-row">
-                        <input type="text" name="email" id="your-email" class="input-text" placeholder="Your Email"
-                            required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}">
+                    <div class="privacy-note">
+                        By signing up, you agree to our
+                        <a href="#" class="gjs-t-link privacy-link">Privacy Policy</a>
+                        and
+                        <a href="#" class="gjs-t-link terms-link">Terms of Service</a>.
                     </div>
                 </div>
-                <div class="form-row-total">
-                    <div class="form-row">
-
-                        <label for="id_gender"></label>
-                        <select name="gender" id="id_gender" class="gender-select" required>
-                            <option value="" disabled selected>Select your gender</option>
-                            <option value="M">Male</option>
-                            <option value="F">Female</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-row-total">
-                    <div class="form-row">
-                        <input type="password" name="password1" id="password" class="input-text"
-                            placeholder="Your Password" required>
-                    </div>
-                    <div class="form-row">
-                        <input type="password" name="password2" id="comfirm-password" class="input-text"
-                            placeholder="Comfirm Password" required>
-                    </div>
-                </div>
-                <div class="form-row-last">
-                    <button type="submit" class="register">register</button>
-                </div>
-            </form>
+            </div>
+        </section>
+    </main>
+    <footer id="ikjofw" class="footer-wrapper">
+        <div id="i0tnz4" class="footer-container">
+            <div id="iyvpdh" class="footer-row"><span id="iexrgc" class="footer-copyright">© 2025 SignUp Inc.</span>
+                <nav aria-label="Footer" class="footer-nav"><a href="#" id="i2bm8m" class="footer-link">Support</a><a
+                        href="#" id="iwlzrx" class="footer-link">Docs</a><a href="#" id="ib0hw8"
+                        class="footer-link">Status</a></nav>
+            </div>
         </div>
-    </div>
-    <script src="{% static 'js/show_message.js' %}"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
-    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-    <script src="{% static 'js/gender_toolbar.js' %}"></script>
-
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+    </footer>
+    <script type="application/javascript">
+        (function () {
+            function toggle(targetId, btn) {
+                const input = document.getElementById(targetId);
+                if (!input) return;
+                const isPwd = input.type === 'password';
+                input.type = isPwd ? 'text' : 'password';
+                const img = btn.querySelector('img');
+                if (img) {
+                    img.src = isPwd
+                        ? 'https://api.iconify.design/lucide-eye-off.svg?color=%236b7280'
+                        : 'https://api.iconify.design/lucide-eye.svg?color=%236b7280';
+                }
+            }
+            document.addEventListener('click', function (e) {
+                const t = e.target.closest('[data-toggle="password"]');
+                if (!t) return;
+                e.preventDefault();
+                toggle(t.getAttribute('data-target'), t);
+            });
+        })();
+    </script>
+</body>
 
 </html>
+<script>var items = document.querySelectorAll('#ibzff5');
+    for (var i = 0, len = items.length; i < len; i++) {
+        (function () {
+            var n, t = this, e = 'gjs-collapse', a = 'max-height', o = 0, i = function () { var n = document.createElement('void'), t = { transition: 'transitionend', OTransition: 'oTransitionEnd', MozTransition: 'transitionend', WebkitTransition: 'webkitTransitionEnd' }; for (var e in t) if (void 0 !== n.style[e]) return t[e] }(), r = function (n) { o = 1; var t = function (n) { var t = window.getComputedStyle(n), e = t.display, o = parseInt(t[a]); if ('none' !== e && 0 !== o) return n.offsetHeight; n.style.height = 'auto', n.style.display = 'block', n.style.position = 'absolute', n.style.visibility = 'hidden'; var i = n.offsetHeight; return n.style.height = '', n.style.display = '', n.style.position = '', n.style.visibility = '', i }(n), e = n.style; e.display = 'block', e.transition = "".concat(a, " 0.25s ease-in-out"), e.overflowY = 'hidden', '' == e[a] && (e[a] = 0), 0 == parseInt(e[a]) ? (e[a] = '0', setTimeout((function () { e[a] = t + 'px' }), 10)) : e[a] = '0' }; e in t || t.addEventListener('click', (function (e) { if (e.preventDefault(), !o) { var l = t.closest("[data-gjs=navbar]"), c = null == l ? void 0 : l.querySelector("[data-gjs=navbar-items]"); c && r(c), n || (null == c || c.addEventListener(i, (function () { o = 0; var n = c.style; 0 == parseInt(n[a]) && (n.display = '', n[a] = '') })), n = 1) } })), t[e] = 1
+        }.bind(items[i]))();
+    }</script>
