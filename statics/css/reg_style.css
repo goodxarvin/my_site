@@ -77,6 +77,9 @@ body {
 	margin: 0;
 	undefined: undefined;
 	line-height: inherit;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
 }
 
 hr {
@@ -305,7 +308,7 @@ video {
 
 .header-wrapper {
 	width: 100%;
-	border-bottom-width: 1px;
+	border-bottom-width: 0;
 	border-color: rgb(226 232 240 / 0.7);
 }
 
@@ -315,8 +318,8 @@ video {
 	margin-right: auto;
 	padding-left: 2rem;
 	padding-right: 2rem;
-	padding-top: 1.5rem;
-	padding-bottom: 1.5rem;
+	padding-top: 1rem;
+	padding-bottom: 1rem;
 }
 
 .brand-link {
@@ -332,6 +335,7 @@ video {
 
 .main-content {
 	width: 100%;
+	flex: 1 1 auto;
 }
 
 .section-container {
@@ -340,15 +344,17 @@ video {
 	margin-right: auto;
 	padding-left: 2rem;
 	padding-right: 2rem;
-	padding-top: 4rem;
-	padding-bottom: 4rem;
+	padding-top: 28px !important;
+	padding-bottom: 28px !important;
+	height: 100%;
 }
 
 .grid-layout {
 	display: grid;
-	grid-template-columns: repeat(12, minmax(0, 1fr));
-	gap: 2.5rem;
-	align-items: flex-start;
+	grid-template-columns: 5fr 7fr;
+	gap: 16px !important;
+	align-items: stretch !important;
+	height: 100%;
 }
 
 .intro-column {
@@ -356,20 +362,21 @@ video {
 }
 
 .hero-title {
-	margin-bottom: 0.75rem;
+	margin-bottom: 6px !important;
 }
 
 .hero-subtitle {
 	color: rgb(71 85 105 / 1);
-	line-height: 1.625;
-	margin-bottom: 2rem;
+	line-height: 1.55;
+	margin-bottom: 0.5rem;
 	max-width: 65ch;
+	display: none;
 }
 
 .benefits-list {
-	display: flex;
+	display: none;
 	flex-direction: column;
-	gap: 0.75rem;
+	gap: 0.25rem;
 	color: rgb(71 85 105 / 1);
 }
 
@@ -377,6 +384,7 @@ video {
 	display: flex;
 	align-items: flex-start;
 	gap: 0.75rem;
+	font-size: 0.9rem;
 }
 
 .benefit-icon {
@@ -396,6 +404,9 @@ video {
 	transition-property: box-shadow;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
+	margin-top: 0;
+	height: 100%;
+	display: flex;
 }
 
 .form-card:hover {
@@ -407,12 +418,17 @@ video {
 	padding-right: 2rem;
 	padding-top: 2rem;
 	padding-bottom: 2rem;
+	padding: 16px !important;
+	display: flex;
+	flex-direction: column;
+	flex: 1;
 }
 
 .signup-form {
 	display: flex;
 	flex-direction: column;
-	gap: 1.5rem;
+	gap: 8px;
+	height: 100%;
 }
 
 .form-description {
@@ -430,12 +446,13 @@ video {
 .field-group {
 	display: flex;
 	flex-direction: column;
-	gap: 0.5rem;
+	gap: 4px;
 }
 
 .label-username {
 	color: rgb(30 41 59 / 1);
 	font-weight: 500;
+	font-size: 14px;
 }
 
 .input-username {
@@ -446,14 +463,15 @@ video {
 	background-color: rgb(255 255 255 / 1);
 	padding-left: 1rem;
 	padding-right: 1rem;
-	padding-top: 0.75rem;
-	padding-bottom: 0.75rem;
+	padding-top: 6px;
+	padding-bottom: 6px;
 	color: rgb(15 23 42 / 1);
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 	transition-property: box-shadow;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
+	font-size: 14px;
 }
 
 .input-username::placeholder::placeholder {
@@ -467,12 +485,13 @@ video {
 
 .help-username {
 	color: rgb(100 116 139 / 1);
-	font-size: 0.875rem;
-	line-height: 1.25rem;
+	font-size: 0.8rem;
+	line-height: 1.3;
+	display: none;
 }
 
 .validation-username {
-	min-height: 1.25rem;
+	min-height: 0.9rem;
 	font-size: 0.75rem;
 	line-height: 1rem;
 	color: var(--gjs-t-color-error);
@@ -481,6 +500,7 @@ video {
 .label-email {
 	color: rgb(30 41 59 / 1);
 	font-weight: 500;
+	font-size: 14px;
 }
 
 .input-email {
@@ -491,14 +511,15 @@ video {
 	background-color: rgb(255 255 255 / 1);
 	padding-left: 1rem;
 	padding-right: 1rem;
-	padding-top: 0.75rem;
-	padding-bottom: 0.75rem;
+	padding-top: 6px;
+	padding-bottom: 6px;
 	color: rgb(15 23 42 / 1);
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 	transition-property: box-shadow;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
+	font-size: 14px;
 }
 
 .input-email::placeholder::placeholder {
@@ -512,12 +533,13 @@ video {
 
 .help-email {
 	color: rgb(100 116 139 / 1);
-	font-size: 0.875rem;
-	line-height: 1.25rem;
+	font-size: 0.8rem;
+	line-height: 1.3;
+	display: none;
 }
 
 .validation-email {
-	min-height: 1.25rem;
+	min-height: 0.9rem;
 	font-size: 0.75rem;
 	line-height: 1rem;
 	color: var(--gjs-t-color-error);
@@ -526,6 +548,7 @@ video {
 .label-gender {
 	color: rgb(30 41 59 / 1);
 	font-weight: 500;
+	font-size: 14px;
 }
 
 .select-wrapper {
@@ -541,11 +564,12 @@ video {
 	background-color: rgb(255 255 255 / 1);
 	padding-left: 1rem;
 	padding-right: 3rem;
-	padding-top: 0.75rem;
-	padding-bottom: 0.75rem;
+	padding-top: 6px;
+	padding-bottom: 6px;
 	color: rgb(15 23 42 / 1);
 	outline: 2px solid transparent;
 	outline-offset: 2px;
+	font-size: 14px;
 }
 
 .select-gender:focus {
@@ -568,12 +592,13 @@ video {
 
 .help-gender {
 	color: rgb(100 116 139 / 1);
-	font-size: 0.875rem;
-	line-height: 1.25rem;
+	font-size: 0.8rem;
+	line-height: 1.3;
+	display: none;
 }
 
 .validation-gender {
-	min-height: 1.25rem;
+	min-height: 0.9rem;
 	font-size: 0.75rem;
 	line-height: 1rem;
 	color: var(--gjs-t-color-error);
@@ -582,6 +607,7 @@ video {
 .label-password {
 	color: rgb(30 41 59 / 1);
 	font-weight: 500;
+	font-size: 14px;
 }
 
 .password-wrapper {
@@ -596,14 +622,15 @@ video {
 	background-color: rgb(255 255 255 / 1);
 	padding-left: 1rem;
 	padding-right: 3rem;
-	padding-top: 0.75rem;
-	padding-bottom: 0.75rem;
+	padding-top: 6px;
+	padding-bottom: 6px;
 	color: rgb(15 23 42 / 1);
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 	transition-property: box-shadow;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
+	font-size: 14px;
 }
 
 .input-password::placeholder::placeholder {
@@ -641,12 +668,13 @@ video {
 
 .help-password {
 	color: rgb(100 116 139 / 1);
-	font-size: 0.875rem;
-	line-height: 1.25rem;
+	font-size: 0.8rem;
+	line-height: 1.3;
+	display: none;
 }
 
 .validation-password {
-	min-height: 1.25rem;
+	min-height: 0.9rem;
 	font-size: 0.75rem;
 	line-height: 1rem;
 	color: var(--gjs-t-color-error);
@@ -655,6 +683,7 @@ video {
 .label-password-confirmation {
 	color: rgb(30 41 59 / 1);
 	font-weight: 500;
+	font-size: 14px;
 }
 
 .password-confirmation-wrapper {
@@ -669,14 +698,15 @@ video {
 	background-color: rgb(255 255 255 / 1);
 	padding-left: 1rem;
 	padding-right: 3rem;
-	padding-top: 0.75rem;
-	padding-bottom: 0.75rem;
+	padding-top: 6px;
+	padding-bottom: 6px;
 	color: rgb(15 23 42 / 1);
 	outline: 2px solid transparent;
 	outline-offset: 2px;
 	transition-property: box-shadow;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
+	font-size: 14px;
 }
 
 .input-password-confirmation::placeholder::placeholder {
@@ -709,12 +739,13 @@ video {
 
 .help-password-confirmation {
 	color: rgb(100 116 139 / 1);
-	font-size: 0.875rem;
-	line-height: 1.25rem;
+	font-size: 0.8rem;
+	line-height: 1.3;
+	display: none;
 }
 
 .validation-password-confirmation {
-	min-height: 1.25rem;
+	min-height: 0.9rem;
 	font-size: 0.75rem;
 	line-height: 1rem;
 	color: var(--gjs-t-color-error);
@@ -723,21 +754,23 @@ video {
 .actions-group {
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 12px;
+	margin-top: auto;
 }
 
 .primary-button {
 	width: 100%;
 	padding-left: 1.5rem;
 	padding-right: 1.5rem;
-	padding-top: 0.875rem;
-	padding-bottom: 0.875rem;
+	padding-top: 8px;
+	padding-bottom: 8px;
 	font-weight: 600;
 	letter-spacing: -0.025em;
 	box-shadow: 0 0 #0000, 0 0 #0000, 0 1px 2px 0 rgb(0 0 0 / 0.05);
 	transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
 	transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 	transition-duration: 150ms;
+	font-size: 0.95rem;
 }
 
 .primary-button:hover {
@@ -767,9 +800,9 @@ video {
 .divider-row {
 	display: flex;
 	align-items: center;
-	gap: 0.75rem;
+	gap: 6px;
 	color: rgb(100 116 139 / 1);
-	font-size: 0.875rem;
+	font-size: 0.75rem;
 	line-height: 1.25rem;
 }
 
@@ -782,8 +815,9 @@ video {
 .signin-prompt {
 	text-align: center;
 	color: rgb(71 85 105 / 1);
-	font-size: 0.875rem;
+	font-size: 0.8rem;
 	line-height: 1.25rem;
+	margin-top: 0;
 }
 
 .signin-link {
@@ -801,8 +835,9 @@ video {
 }
 
 .privacy-note {
-	margin-top: 1rem;
-	font-size: 0.75rem;
+	text-align: center;
+	margin-top: 6px !important;
+	font-size: 0.65rem;
 	line-height: 1rem;
 	color: rgb(100 116 139 / 1);
 }
@@ -839,7 +874,7 @@ video {
 
 .footer-wrapper {
 	width: 100%;
-	border-top-width: 1px;
+	border-top-width: 0;
 	border-color: rgb(226 232 240 / 0.7);
 }
 
@@ -849,14 +884,15 @@ video {
 	margin-right: auto;
 	padding-left: 2rem;
 	padding-right: 2rem;
-	padding-top: 2rem;
-	padding-bottom: 2rem;
+	padding-top: 12px !important;
+	padding-bottom: 12px !important;
 }
 
 .footer-row {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	gap: 0.25rem !important;
 }
 
 .footer-copyright {
@@ -868,8 +904,8 @@ video {
 .footer-nav {
 	display: flex;
 	align-items: center;
-	gap: 1.5rem;
-	font-size: 0.875rem;
+	gap: 0.75rem;
+	font-size: 0.8rem;
 	line-height: 1.25rem;
 }
 
@@ -907,6 +943,14 @@ video {
 	background-attachment: unset;
 	background-origin: unset;
 	background-color: transparent;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
 }
 
 #i8p0s {
@@ -923,6 +967,14 @@ video {
 	background-origin: unset;
 	font-family: Arial, Helvetica, sans-serif;
 	background-color: rgba(0, 0, 0, 0);
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 23px;
+	margin-left: 0px;
+	padding-top: 16px;
+	padding-right: 16px;
+	padding-bottom: 12px;
+	padding-left: 16px;
 }
 
 #i10t3 {
@@ -931,45 +983,62 @@ video {
 
 #i3agl {
 	background-color: rgba(0, 0, 0, 0.75);
-	padding-top: 49px;
+	padding-top: 28px;
 	padding-right: 32px;
-	padding-bottom: 64px;
+	padding-bottom: 38px;
 	padding-left: 32px;
 	margin-top: 0px;
 	margin-right: auto !important;
-	margin-bottom: 0px;
+	margin-bottom: 2px;
 	margin-left: auto !important;
 	background-clip: padding-box;
 	border: 0;
+	border-top-left-radius: 45px;
+	border-top-right-radius: 45px;
+	border-bottom-left-radius: 45px;
+	border-bottom-right-radius: 45px;
 }
 
 #i8fgd {
+	border: 0;
+	border-top-left-radius: 45px;
+	border-top-right-radius: 45px;
+	border-bottom-right-radius: 45px;
+	border-bottom-left-radius: 45px;
 	background-color: rgba(0, 0, 0, 0.75);
-	padding-top: 0px;
+	padding-top: 16px;
 	padding-right: 0px;
-	padding-bottom: 18px;
+	padding-bottom: 16px;
 	padding-left: 0px;
-	margin-top: 50px;
+	margin-top: 5px;
 	margin-right: auto !important;
-	margin-bottom: 0px;
+	margin-bottom: 4px;
 	margin-left: auto !important;
-	flex-direction: column-reverse;
+	flex-direction: row;
 	align-items: center;
 	position: static;
 	background-clip: padding-box;
 	border: 0;
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+	min-height: 96px;
+	max-width: 56rem;
+	width: 100%;
 }
 
 #izcw3g {
 	color: black;
-	width: 124px;
-	height: 38px;
+	width: 130px;
+	height: 26px;
+	max-height: 48px;
+	object-fit: contain;
 }
 
 #im2n {
 	background-image: url("/static/img/signup.jpg");
 	background-position: 0px 0px;
-	background-size: 1476px 1476px;
+	background-size: cover;
 	background-repeat: repeat;
 	background-attachment: scroll;
 	background-origin: padding-box;
@@ -982,6 +1051,7 @@ video {
 #ip145 {
 	background-color: rgba(0, 0, 0, 0);
 	color: rgba(255, 255, 255, 1);
+	text-align: center;
 }
 
 .gjs-icon {
@@ -1045,6 +1115,8 @@ video {
 
 #ig8uug {
 	background-color: rgba(255, 255, 255, 0);
+	display: block !important;
+	width: 100%;
 }
 
 #iclciu {
@@ -1086,17 +1158,40 @@ video {
 	border: 0;
 }
 
+html,
+body {
+	height: auto;
+	min-height: 110vh;
+}
+
+#i1atv {
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+}
+
+#i961xs {
+	text-align: center;
+}
+
 @media (max-width: 992px) {
 	.header-container {
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
 	}
 
 	.section-container {
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
-		padding-top: 3rem;
-		padding-bottom: 3rem;
+		padding-top: 16px !important;
+		padding-bottom: 16px !important;
 	}
 
 	.intro-column {
@@ -1110,11 +1205,14 @@ video {
 	.form-padding {
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
+		padding: 12px !important;
 	}
 
 	.footer-container {
 		padding-left: 1.5rem;
 		padding-right: 1.5rem;
+		padding-top: 0.5rem !important;
+		padding-bottom: 0.5rem !important;
 	}
 
 	.footer-row {
@@ -1133,7 +1231,7 @@ video {
 	}
 
 	.grid-layout {
-		gap: 1.75rem;
+		gap: 12px !important;
 		grid-template-columns: 1fr;
 	}
 
@@ -1144,7 +1242,7 @@ video {
 	}
 
 	.signup-form {
-		gap: 1.25rem;
+		gap: 0.8rem;
 	}
 
 	.benefits-list {
@@ -1152,8 +1250,8 @@ video {
 	}
 
 	.primary-button {
-		padding-top: 1rem;
-		padding-bottom: 1rem;
+		padding-top: 0.6rem;
+		padding-bottom: 0.6rem;
 		font-size: 1rem;
 	}
 
@@ -1174,13 +1272,22 @@ video {
 	}
 
 	#i3agl {
-		margin-left: 0;
-		margin-right: 0;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
 	}
 
 	#i8fgd {
 		margin-left: 0;
 		margin-right: 0;
+		min-height: 80px;
+		padding-top: 14px !important;
+		padding-bottom: 14px !important;
+	}
+
+	.actions-group {
+		gap: 11px;
 	}
 }
 
@@ -1204,13 +1311,15 @@ video {
 	.header-container {
 		padding-left: 1rem;
 		padding-right: 1rem;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
 	}
 
 	.section-container {
 		padding-left: 1rem;
 		padding-right: 1rem;
-		padding-top: 2rem;
-		padding-bottom: 2rem;
+		padding-top: 12px !important;
+		padding-bottom: 12px !important;
 	}
 
 	.form-padding {
@@ -1218,12 +1327,14 @@ video {
 		padding-right: 1.25rem;
 		padding-top: 1.5rem;
 		padding-bottom: 1.5rem;
-		padding: 1.25rem;
+		padding: 12px !important;
 	}
 
 	.footer-container {
 		padding-left: 1rem;
 		padding-right: 1rem;
+		padding-top: 0.5rem !important;
+		padding-bottom: 0.5rem !important;
 	}
 
 	.gjs-t-h1 {
@@ -1238,7 +1349,7 @@ video {
 	}
 
 	.grid-layout {
-		gap: 1rem;
+		gap: 10px !important;
 		grid-template-columns: 1fr;
 	}
 
@@ -1247,32 +1358,32 @@ video {
 	}
 
 	.input-username {
-		padding-top: 0.875rem;
-		padding-bottom: 0.875rem;
+		padding-top: 0.55rem;
+		padding-bottom: 0.55rem;
 		font-size: 16px;
 	}
 
 	.input-email {
-		padding-top: 0.875rem;
-		padding-bottom: 0.875rem;
+		padding-top: 0.55rem;
+		padding-bottom: 0.55rem;
 		font-size: 16px;
 	}
 
 	.input-password {
-		padding-top: 0.875rem;
-		padding-bottom: 0.875rem;
+		padding-top: 0.55rem;
+		padding-bottom: 0.55rem;
 		font-size: 16px;
 	}
 
 	.input-password-confirmation {
-		padding-top: 0.875rem;
-		padding-bottom: 0.875rem;
+		padding-top: 0.55rem;
+		padding-bottom: 0.55rem;
 		font-size: 16px;
 	}
 
 	.select-gender {
-		padding-top: 0.875rem;
-		padding-bottom: 0.875rem;
+		padding-top: 0.55rem;
+		padding-bottom: 0.55rem;
 		font-size: 16px;
 	}
 
@@ -1290,8 +1401,8 @@ video {
 	}
 
 	.primary-button {
-		padding-top: 1.125rem;
-		padding-bottom: 1.125rem;
+		padding-top: 10px;
+		padding-bottom: 10px;
 		font-size: 1rem;
 	}
 
@@ -1300,14 +1411,16 @@ video {
 	}
 
 	.footer-link {
-		padding: 8px 6px;
+		padding: 4px 2px;
 	}
 
 	#i3agl {
-		margin-left: 0;
-		margin-right: 0;
-		padding-left: 1rem;
-		padding-right: 1rem;
+		margin-left: auto;
+		margin-right: auto;
+		padding-left: 0.75rem;
+		padding-right: 0.75rem;
+		padding-top: 10px;
+		padding-bottom: 12px;
 	}
 
 	#i8fgd {
@@ -1315,13 +1428,36 @@ video {
 		margin-right: 0;
 		padding-left: 1rem;
 		padding-right: 1rem;
+		min-height: 72px;
+		padding-top: 12px !important;
+		padding-bottom: 12px !important;
 	}
 
 	.actions-group {
-		gap: 0.75rem;
+		gap: 10px;
 	}
 
 	.divider-row {
 		gap: 0.5rem;
+	}
+
+	.signup-form {
+		gap: 0.7rem;
+	}
+
+	.privacy-note {
+		margin-top: 0.4rem;
+	}
+
+	.footer-nav {
+		gap: 0.5rem;
+	}
+
+	.hero-title {
+		margin-bottom: 8px !important;
+	}
+
+	#izcw3g {
+		max-height: 40px;
 	}
 }

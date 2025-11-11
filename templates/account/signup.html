@@ -1,5 +1,7 @@
 {% load static %}
 
+<!DOCTYPE html>
+<html lang="en">
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,7 +18,8 @@
 
 <body id="im2n" class="gjs-t-body body">
     <header id="if9pd" class="header-wrapper">
-        <div id="i8fgd" class="header-container"><a href="#" aria-label="Home" class="group brand-link">
+        <div id="i8fgd" class="header-container"><a href="{% url 'home:index' %}" aria-label="Home"
+                class="group brand-link">
                 <div class="brand-text"></div>
             </a>
             <div id="ig8uug" class="navbar">
@@ -29,7 +32,9 @@
                             </svg></div>
                     </div>
                     <div data-gjs="navbar-items" class="navbar-items-c">
-                        <nav id="iwnsa2" class="navbar-menu-nav"><a id="igtcl">Home</a><a>About</a><a>Contact</a></nav>
+                        <nav id="iwnsa2" class="navbar-menu-nav"><a id="igtcl" href="{% url 'home:index' %}">Home</a><a
+                                href="{% url 'about:about' %}">About</a><a
+                                href="{% url 'contact:contact' %}">Contact</a></nav>
                     </div>
                 </div>
             </div>
@@ -42,17 +47,14 @@
                     <h1 id="ip145" class="gjs-t-h1 hero-title">Create your account</h1>
                     <p id="i8p0s" class="hero-subtitle">
                         Join our community in a few easy steps. Your information is secure and never shared. All fields
-                        are
-                        required.
+                        are required.
                     </p>
                     <ul id="i10t3" class="benefits-list">
-                        <li class="benefit-item"><img
-                                src="https://api.iconify.design/lucide-badge-check.svg?color=%2316a34a" alt=""
+                        <li class="benefit-item"><img src="{% static 'img/check.svg' %}" alt=""
                                 class="benefit-icon" /><span>Access personalized features and updates</span></li>
-                        <li class="benefit-item"><img src="https://api.iconify.design/lucide-shield.svg?color=%2310b981"
-                                alt="" class="benefit-icon" /><span>Privacy-first and secure authentication</span></li>
-                        <li class="benefit-item"><img
-                                src="https://api.iconify.design/lucide-sparkles.svg?color=%233b82f6" alt=""
+                        <li class="benefit-item"><img src="{% static 'img/shield.svg' %}" alt=""
+                                class="benefit-icon" /><span>Privacy-first and secure authentication</span></li>
+                        <li class="benefit-item"><img src="{% static 'img/sparkles.svg' %}" alt=""
                                 class="benefit-icon" /><span>Clean and simple experience</span></li>
                     </ul>
                 </div>
@@ -60,9 +62,10 @@
                     <div class="gjs-t-border form-card">
                         <div id="iemzn" class="form-padding">
                             <form method="post" action="#" novalidate="" aria-describedby="formDescription"
-                                class="signup-form"><span id="formDescription" class="form-description">Signup form with
-                                    five fields: username, email, gender,
-                                    password and password confirmation</span>
+                                class="signup-form">
+                                {% csrf_token %}
+                                <span id="formDescription" class="form-description">Signup form with
+                                    five fields: username, email, gender, password and password confirmation</span>
                                 <div class="field-group"><label for="username"
                                         class="label-username">Username</label><input type="text" id="username"
                                         name="username" required placeholder="e.g., alex.fernandez"
@@ -86,45 +89,42 @@
                                             required aria-describedby="genderHelp genderError"
                                             aria-label="Select your gender" class="select-gender">
                                             <option value="" disabled selected id="ioqew">Select your gender</option>
-                                            <option value="female" id="ime7h">Female</option>
-                                            <option value="male" id="id1xp">Male</option>
+                                            <option value="F" id="ime7h">Female</option>
+                                            <option value="M" id="id1xp">Male</option>
                                         </select><span id="i6dlz" class="select-icon"><img
-                                                src="https://api.iconify.design/lucide-chevron-down.svg?color=%236b7280"
-                                                alt="" id="i82qf" class="icon-image" /></span></div>
+                                                src="{% static 'img/down.svg' %}" alt="" id="i82qf"
+                                                class="icon-image" /></span></div>
                                     <p id="genderHelp" class="help-gender">Used for personalization. You can change this
                                         later.</p>
                                     <div aria-live="polite" id="genderError" class="validation-gender"></div>
                                 </div>
                                 <div class="field-group"><label for="password" class="label-password">Password</label>
-                                    <div class="password-wrapper"><input type="password" id="password" name="password"
+                                    <div class="password-wrapper"><input type="password" id="password" name="password1"
                                             required placeholder="At least 8 characters" autocomplete="new-password"
                                             aria-describedby="passwordHelp passwordError"
                                             class="input-password" /><button type="button"
                                             aria-label="Toggle password visibility" data-toggle="password"
                                             data-target="password" class="password-toggle-button"><img
-                                                src="https://api.iconify.design/lucide-eye.svg?color=%236b7280" alt=""
+                                                src="{% static 'img/open_eye.svg' %}" alt=""
                                                 class="password-toggle-icon" /></button></div>
                                     <p id="passwordHelp" class="help-password">Use at least 8 characters with a mix of
-                                        letters and
-                                        numbers.</p>
+                                        letters and numbers.</p>
                                     <div aria-live="polite" id="passwordError" class="validation-password"></div>
                                 </div>
                                 <div class="field-group"><label for="password_confirmation"
-                                        class="label-password-confirmation">Password
-                                        confirmation</label>
+                                        class="label-password-confirmation">Password confirmation</label>
                                     <div class="password-confirmation-wrapper"><input type="password"
-                                            id="password_confirmation" name="password_confirmation" required
+                                            id="password_confirmation" name="password2" required
                                             placeholder="Re-enter your password" autocomplete="new-password"
                                             aria-describedby="passwordConfirmationHelp passwordConfirmationError"
                                             class="input-password-confirmation" /><button type="button"
                                             aria-label="Toggle password confirmation visibility" data-toggle="password"
                                             data-target="password_confirmation"
                                             class="password-confirmation-toggle-button"><img
-                                                src="https://api.iconify.design/lucide-eye.svg?color=%236b7280" alt=""
+                                                src="{% static 'img/open_eye.svg' %}" alt=""
                                                 class="password-toggle-icon" /></button></div>
                                     <p id="passwordConfirmationHelp" class="help-password-confirmation">Must match the
-                                        password exactly.
-                                    </p>
+                                        password exactly.</p>
                                     <div aria-live="polite" id="passwordConfirmationError"
                                         class="validation-password-confirmation"></div>
                                 </div>
@@ -138,7 +138,8 @@
                                     </div>
                                     <p class="signin-prompt">
                                         Already have an account?
-                                        <a href="#" id="iyqmx5" class="gjs-t-link signin-link">Sign in</a>
+                                        <a href="{% url 'user:account_login' %}" id="iyqmx5"
+                                            class="gjs-t-link signin-link">Sign in</a>
                                     </p>
                                 </div>
                             </form>
@@ -173,8 +174,8 @@
                 const img = btn.querySelector('img');
                 if (img) {
                     img.src = isPwd
-                        ? 'https://api.iconify.design/lucide-eye-off.svg?color=%236b7280'
-                        : 'https://api.iconify.design/lucide-eye.svg?color=%236b7280';
+                        ? '{% static "img/close_eye.svg" %}'
+                        : '{% static "img/open_eye.svg" %}';
                 }
             }
             document.addEventListener('click', function (e) {
@@ -186,6 +187,14 @@
         })();
     </script>
 </body>
+
+</html>
+<script>var items = document.querySelectorAll('#ibzff5');
+    for (var i = 0, len = items.length; i < len; i++) {
+        (function () {
+            var n, t = this, e = 'gjs-collapse', a = 'max-height', o = 0, i = function () { var n = document.createElement('void'), t = { transition: 'transitionend', OTransition: 'oTransitionEnd', MozTransition: 'transitionend', WebkitTransition: 'webkitTransitionEnd' }; for (var e in t) if (void 0 !== n.style[e]) return t[e] }(), r = function (n) { o = 1; var t = function (n) { var t = window.getComputedStyle(n), e = t.display, o = parseInt(t[a]); if ('none' !== e && 0 !== o) return n.offsetHeight; n.style.height = 'auto', n.style.display = 'block', n.style.position = 'absolute', n.style.visibility = 'hidden'; var i = n.offsetHeight; return n.style.height = '', n.style.display = '', n.style.position = '', n.style.visibility = '', i }(n), e = n.style; e.display = 'block', e.transition = "".concat(a, " 0.25s ease-in-out"), e.overflowY = 'hidden', '' == e[a] && (e[a] = 0), 0 == parseInt(e[a]) ? (e[a] = '0', setTimeout((function () { e[a] = t + 'px' }), 10)) : e[a] = '0' }; e in t || t.addEventListener('click', (function (e) { if (e.preventDefault(), !o) { var l = t.closest("[data-gjs=navbar]"), c = null == l ? void 0 : l.querySelector("[data-gjs=navbar-items]"); c && r(c), n || (null == c || c.addEventListener(i, (function () { o = 0; var n = c.style; 0 == parseInt(n[a]) && (n.display = '', n[a] = '') })), n = 1) } })), t[e] = 1
+        }.bind(items[i]))();
+    }</script>
 
 </html>
 <script>var items = document.querySelectorAll('#ibzff5');
