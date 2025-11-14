@@ -222,5 +222,7 @@ ACCOUNT_ADAPTER = 'allauth_2fa.adapter.OTPAdapter'
 ACCOUNT_SIGNUP_FORM_CLASS = "user_management.forms.GenderSignUpForm"
 AUTH_USER_MODEL = "user_management.CustomUser"
 
+# redirect all urls without slashes to urls with slashes
+
 
 APPEND_SLASH = True
