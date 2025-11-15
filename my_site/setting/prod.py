@@ -28,3 +28,16 @@ CSRF_COOKIE_SECURE = True
 # secure session cookie
 
 SESSION_COOKIE_SECURE = True
+
+# postgresql 
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'arvinbeh_travelista',      # اسم کامل دیتابیس CPanel
+        'USER': '-',        # یوزر دیتابیس
+        'PASSWORD': '-',
+        'HOST': "localhost",             # یا 127.0.0.1
+        'PORT': '5432',
+    }
+}

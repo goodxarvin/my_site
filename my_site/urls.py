@@ -31,6 +31,8 @@ sitemaps = {"home": HomeStaticViewSitemap,
             "about": AboutStaticViewSitemap,
             "blog": BlogSitemap}
 
+from robots.views import R
+
 
 urlpatterns = [
     path("admin/", admin.site.urls),

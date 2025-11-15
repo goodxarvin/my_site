@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coming Soon — Nature &amp; Travel</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Marcellus&amp;family=Poppins:wght@300;400;500;600&amp;display=swap"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="{% static 'css/coming_soon.css' %}">
+</head>
+
+<body class="gjs-t-body body">
+    <main class="main-hero">
+        <div class="background-wrapper"><img src="{% static 'img/coming_soon.jpg' %}"
+                alt="Serene nature and travel landscape background" class="background-image" />
+            <div id="iitpk" class="gradient-overlay"></div>
+        </div>
+        <section class="hero-content">
+            <div class="gjs-t-border content-card">
+                <div id="icxnx" class="content-inner">
+                    <div id="ivr6q" class="logo-row"><img src="{% static 'img/compass.svg' %}" alt="Compass icon"
+                            id="ibi6i" class="brand-icon" /><img id="ixc5t" src="{% static 'img/logo.png' %}" />
+                    </div>
+                    <h1 id="itwcn" class="gjs-t-h1 heading-title">Coming Soon</h1>
+                    <p class="gjs-t-h2 subtitle">
+                        Our website is on its way. Be the first to explore curated journeys, nature guides, and travel
+                        stories.
+                    </p>
+                    <form method="get" aria-label="Email subscription for updates" class="subscription-form">
+                        <div class="form-row"><label for="email" class="email-label">Email address</label><input
+                                type="email" id="email" name="email" required autocomplete="email"
+                                placeholder="Enter your email" aria-describedby="email-help"
+                                class="email-input" /><button type="submit" aria-label="Subscribe for updates"
+                                class="gjs-t-button submit-button"><img src="{% static 'img/mail.svg' %}" alt=""
+                                    class="button-icon" />
+                                Notify Me
+                            </button></div>
+                        <div class="consent-row"><label class="consent-label"><input type="checkbox"
+                                    aria-label="Consent to receive updates" class="peer consent-input" /><span
+                                    class="peer-focus:outline-none peer-focus:ring-2 peer-focus:ring-emerald-400/60 custom-checkbox"><img
+                                        src="{% static 'img/check_out.svg' %}" alt="" id="ic5du"
+                                        class="peer-checked:opacity-100 checkbox-icon" /></span><span
+                                    class="consent-text">I agree to receive occasional email updates about the launch
+                                    and new content.</span></label></div>
+                        <p id="email-help" class="helper-text">
+                            We respect your privacy. Unsubscribe at any time.
+                        </p>
+                    </form>
+                    <div class="social-row"><a href="#" class="gjs-t-link social-link"><img
+                                src="{% static 'img/instagram.svg' %}" alt="Instagram"
+                                class="social-icon" /><span>Instagram</span></a><a href="#"
+                            class="gjs-t-link social-link"><img src="{% static 'img/twitter.svg' %}" alt="Twitter"
+                                class="social-icon" /><span>Twitter</span></a><a href="#"
+                            class="gjs-t-link social-link"><img src="{% static 'img/mail.svg' %}" alt="Email"
+                                class="social-icon" /><span>Contact</span></a></div>
+                </div>
+            </div>
+            <div class="teaser-grid">
+                <figure class="gjs-t-border teaser-item"><img loading="lazy" src="{% static 'img/trees.jpg' %}"
+                        alt="Forest trail teaser" class="teaser-image" />
+                    <figcaption class="teaser-caption">Guided Nature Hikes</figcaption>
+                </figure>
+                <figure class="gjs-t-border teaser-item"><img loading="lazy" src="{% static 'img/astral.jpg' %}"
+                        alt="Coastal travel teaser" class="teaser-image" />
+                    <figcaption class="teaser-caption">Coastal Escapes</figcaption>
+                </figure>
+                <figure class="gjs-t-border teaser-item"><img loading="lazy" src="{% static 'img/mountain.jpg' %}"
+                        alt="Mountain sunrise teaser" class="teaser-image" />
+                    <figcaption class="teaser-caption">Alpine Views</figcaption>
+                </figure>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand"><img src="{% static 'img/pine_tree.svg' %}" alt="Tree icon"
+                    class="footer-icon" /><span class="footer-brand-text">Trail &amp; Tide</span></div>
+            <div class="footer-copy">© 2025 Trail &amp; Tide. All rights reserved.</div>
+            <nav class="footer-nav"><a href="#" class="gjs-t-link footer-link">Privacy</a><a href="#"
+                    class="gjs-t-link footer-link">Terms</a><a href="#" class="gjs-t-link footer-link">Support</a></nav>
+        </div>
+    </footer>
+</body>
+
+</html>

@@ -31,4 +31,4 @@ def test_view(request):
             return HttpResponse("invalid")
 
     contact = SubmitForm()
-    return render(request, 'website/test.html', {"forms": contact})
+    return render(request, 'travelista/coming_soon.html', {"forms": contact})
