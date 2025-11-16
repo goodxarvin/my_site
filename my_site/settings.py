@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     "django_otp.plugins.otp_totp",  # for 2fa
     "django_otp.plugins.otp_static",  # for 2fa
     "allauth_2fa",
+    "compressor",
 ]
 
 
@@ -226,3 +227,18 @@ AUTH_USER_MODEL = "user_management.CustomUser"
 
 
 APPEND_SLASH = True
+
+
+# static file finders
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    # other finders..
+    'compressor.finders.CompressorFinder',
+)
+
+# compress settings
+
+COMPRESS_ENABLED = True
+# COMPRESS_OFFLINE = True
